@@ -30,4 +30,3 @@ public class EmployeesProductsEntity {
     private Date date;
 
     }
-}
