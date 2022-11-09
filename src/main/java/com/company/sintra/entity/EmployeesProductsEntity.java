@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
+import java.sql.Date;
+import java.util.Objects;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -21,10 +22,12 @@ public class EmployeesProductsEntity {
     @Basic
     @Column(name = "employees_id")
     private int employeesId;
+    @Basic
+    @Column(name = "product_id")
+    private int productId;
+    @Basic
+    @Column(name = "date")
+    private Date date;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
-    private ProductEntity productsByEmployeesId;
-
-
+    }
 }

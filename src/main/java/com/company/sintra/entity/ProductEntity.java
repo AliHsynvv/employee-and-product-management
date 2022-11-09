@@ -8,7 +8,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -29,4 +28,5 @@ public class ProductEntity {
     @Basic
     @Column(name = "date")
     private Date date;
+
 }
