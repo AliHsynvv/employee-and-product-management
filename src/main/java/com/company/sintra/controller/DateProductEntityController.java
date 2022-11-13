@@ -25,7 +25,7 @@ public class DateProductEntityController {
         return ResponseEntity.ok(list);
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public void update(@PathVariable Integer id, @RequestBody DateProductsEntityDto dateProductsEntityDto) {
         dateProductsEntityService.update(id, dateProductsEntityDto);
     }

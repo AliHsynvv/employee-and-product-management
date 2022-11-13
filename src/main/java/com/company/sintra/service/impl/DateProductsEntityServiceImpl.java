@@ -49,6 +49,30 @@ public class DateProductsEntityServiceImpl implements DateProductsEntityService 
     @Override
     public void update(Integer idd, DateProductsEntityDto dateProductsEntityDto) {
         DateProductsEntity dateProductsEntity = dateProductsEntityRepositor.findById(idd.intValue());
+
+        if (dateProductsEntityDto.getProductsId() == dateProductsEntity.getProductsId()) {
+            ProductEntity productEntity = productEntityRepository.findById(dateProductsEntity.getProductsId());
+
+            if (dateProductsEntityDto.getCount() > dateProductsEntity.getCount()) {
+                int result = productEntity.getCount() + (dateProductsEntityDto.getCount() - dateProductsEntity.getCount());
+                productEntity.setCount(result);
+            } else if (dateProductsEntityDto.getCount() < dateProductsEntity.getCount()) {
+
+                int result = productEntity.getCount() - (dateProductsEntity.getCount() - dateProductsEntityDto.getCount());
+                productEntity.setCount(result);
+            }
+            productEntityRepository.save(productEntity);
+        } else if (dateProductsEntityDto.getProductsId() != dateProductsEntity.getProductsId()) {
+
+            ProductEntity afterProductEntity = productEntityRepository.findById(dateProductsEntityDto.getProductsId());
+            int result = dateProductsEntityDto.getCount() + afterProductEntity.getCount();
+            afterProductEntity.setCount(result);
+            productEntityRepository.save(afterProductEntity);
+            ProductEntity currentProductEntity = productEntityRepository.findById(dateProductsEntity.getProductsId());
+            int currentResult = currentProductEntity.getCount() - dateProductsEntityDto.getCount();
+            currentProductEntity.setCount(currentResult);
+            productEntityRepository.save(currentProductEntity);
+        }
         dateProductsEntity.setDate(dateProductsEntityDto.getDate());
         dateProductsEntity.setProductsId(dateProductsEntityDto.getProductsId());
         dateProductsEntity.setCount(dateProductsEntityDto.getCount());
