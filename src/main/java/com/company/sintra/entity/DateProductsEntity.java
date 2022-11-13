@@ -1,5 +1,6 @@
 package com.company.sintra.entity;
 
+import com.company.sintra.dto.ProductEntityDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,5 +27,6 @@ public class DateProductsEntity {
     @Basic
     @Column(name = "date")
     private Date date;
+
 
 }

@@ -10,10 +10,12 @@ import com.company.sintra.service.DateProductsEntityService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -21,6 +23,8 @@ public class DateProductsEntityServiceImpl implements DateProductsEntityService 
 
     private final DateProductsEntityRepository dateProductsEntityRepositor;
     private final ProductEntityRepository productEntityRepository;
+
+    private final ModelMapper modelMapper;
 
     @Override
     public void create(DateProductsEntityDto dateProductsEntityDto) {
@@ -40,7 +44,10 @@ public class DateProductsEntityServiceImpl implements DateProductsEntityService 
 
     @Override
     public List<DateProductsEntityDto> getAll() {
-        return null;
+        List<DateProductsEntity> dateProductsEntities = dateProductsEntityRepositor.findAll();
+
+        return dateProductsEntities.stream().map(dateProductsEntity -> modelMapper.map(dateProductsEntity,
+                DateProductsEntityDto.class)).collect(Collectors.toList());
     }
 
     @Override

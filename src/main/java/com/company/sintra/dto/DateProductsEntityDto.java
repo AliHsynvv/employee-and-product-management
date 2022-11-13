@@ -1,5 +1,6 @@
 package com.company.sintra.dto;
 
+import com.company.sintra.entity.ProductEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -10,8 +11,7 @@ import java.sql.Date;
  */
 @Data
 public class DateProductsEntityDto implements Serializable {
-    private final int id;
-    private final int productsId;
-    private final Integer count;
-    private final Date date;
+    private int productsId;
+    private Integer count;
+    private Date date;
 }

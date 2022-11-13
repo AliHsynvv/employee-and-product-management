@@ -10,8 +10,8 @@ import java.sql.Date;
  */
 @Data
 public class ProductEntityDto implements Serializable {
-    private final int id;
-    private final String name;
-    private final int count;
-    private final Date date;
+    private  int id;
+    private  String name;
+    private  int count;
+    private  Date date;
 }
