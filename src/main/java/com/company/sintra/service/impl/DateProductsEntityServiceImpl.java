@@ -5,15 +5,11 @@ import com.company.sintra.entity.DateProductsEntity;
 import com.company.sintra.entity.ProductEntity;
 import com.company.sintra.repository.DateProductsEntityRepository;
 import com.company.sintra.repository.ProductEntityRepository;
-import com.company.sintra.service.CrudService;
 import com.company.sintra.service.DateProductsEntityService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,16 +48,26 @@ public class DateProductsEntityServiceImpl implements DateProductsEntityService 
 
     @Override
     public void update(Integer idd, DateProductsEntityDto dateProductsEntityDto) {
-
+        DateProductsEntity dateProductsEntity = dateProductsEntityRepositor.findById(idd.intValue());
+        dateProductsEntity.setDate(dateProductsEntityDto.getDate());
+        dateProductsEntity.setProductsId(dateProductsEntityDto.getProductsId());
+        dateProductsEntity.setCount(dateProductsEntityDto.getCount());
+        dateProductsEntityRepositor.save(dateProductsEntity);
     }
 
     @Override
     public void deleteById(Integer idd) {
-
+        DateProductsEntity dateProductsEntity = dateProductsEntityRepositor.findById(idd.intValue());
+        ProductEntity productEntity = productEntityRepository.findById(dateProductsEntity.getProductsId());
+        int result = productEntity.getCount() - dateProductsEntity.getCount();
+        productEntity.setCount(result);
+        productEntityRepository.save(productEntity);
+        dateProductsEntityRepositor.deleteById(idd);
     }
 
     @Override
     public DateProductsEntityDto findById(Integer idd) {
-        return null;
+        DateProductsEntity dateProductsEntity = dateProductsEntityRepositor.findById(idd.intValue());
+        return modelMapper.map(dateProductsEntity, DateProductsEntityDto.class);
     }
 }

@@ -24,4 +24,20 @@ public class DateProductEntityController {
         List<DateProductsEntityDto> list = dateProductsEntityService.getAll();
         return ResponseEntity.ok(list);
     }
+
+    @PutMapping("/{id}")
+    public void update(@PathVariable Integer id, @RequestBody DateProductsEntityDto dateProductsEntityDto) {
+        dateProductsEntityService.update(id, dateProductsEntityDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Integer id) {
+        dateProductsEntityService.deleteById(id);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DateProductsEntityDto> findById(@PathVariable Integer id) {
+        DateProductsEntityDto dateProductsEntityDto = dateProductsEntityService.findById(id);
+        return ResponseEntity.ok(dateProductsEntityDto);
+    }
 }
