@@ -1,7 +1,6 @@
 package com.company.sintra.controller;
 
 import com.company.sintra.dto.EmployeesEntityDto;
-import com.company.sintra.entity.EmployeesEntity;
 import com.company.sintra.service.EmployeesEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/employees")
 @RequiredArgsConstructor
 public class EmployeesEntityController {
     private final EmployeesEntityService employeesEntityService;
 
-    @PostMapping("/create")
+    @PostMapping()
     public  void create(@RequestBody EmployeesEntityDto employeesEntityDto){
         employeesEntityService.create(employeesEntityDto);
     }
@@ -28,13 +27,11 @@ public class EmployeesEntityController {
     }
 
     @PatchMapping("/{id}")
-
     public void update(@PathVariable Integer id , @RequestBody EmployeesEntityDto employeesEntityDto){
         employeesEntityService.update(id, employeesEntityDto);
     }
 
     @GetMapping("/{id}")
-
     public  ResponseEntity<EmployeesEntityDto > findById(@PathVariable  Integer id){
         EmployeesEntityDto employeesEntityDto= employeesEntityService.findById(id);
         return ResponseEntity.ok(employeesEntityDto);

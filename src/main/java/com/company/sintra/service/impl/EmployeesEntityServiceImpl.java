@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmployeesEntityServiceImpl implements EmployeesEntityService {
     private final EmployeesEntityRepository employeesEntityRepository;
-
     private final ModelMapper modelMapper;
     @Override
     public void create(EmployeesEntityDto employeesEntityDto) {
@@ -23,7 +22,6 @@ public class EmployeesEntityServiceImpl implements EmployeesEntityService {
                 .name(employeesEntityDto.getName())
                 .build();
         employeesEntityRepository.save(employeesEntity);
-
     }
 
     @Override

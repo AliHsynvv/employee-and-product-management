@@ -9,6 +9,6 @@ import java.io.Serializable;
  */
 @Data
 public class EmployeesEntityDto implements Serializable {
-    private final int id;
-    private final String name;
+    private int id;
+    private String name;
 }
