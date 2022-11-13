@@ -19,7 +19,11 @@ public class ProductEntityServiceImpl implements ProductEntityService {
 
     @Override
     public void create(ProductEntityDto productEntityDto) {
-
+        ProductEntity productEntity = ProductEntity.builder()
+                .count(productEntityDto.getCount())
+                .name(productEntityDto.getName())
+                .build();
+        productEntityRepository.save(productEntity);
     }
 
     @Override
@@ -32,16 +36,19 @@ public class ProductEntityServiceImpl implements ProductEntityService {
 
     @Override
     public void update(Integer idd, ProductEntityDto productEntityDto) {
-
+        ProductEntity productEntity = productEntityRepository.findById(idd.intValue());
+        productEntity.setName(productEntityDto.getName());
+        productEntityRepository.save(productEntity);
     }
 
     @Override
     public void deleteById(Integer idd) {
-
+        productEntityRepository.deleteById(idd);
     }
 
     @Override
     public ProductEntityDto findById(Integer idd) {
-        return null;
+        ProductEntity productEntity = productEntityRepository.findById(idd.intValue());
+        return modelMapper.map(productEntity, ProductEntityDto.class);
     }
 }

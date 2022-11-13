@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Objects;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +27,8 @@ public class EmployeesProductsEntity {
     @Basic
     @Column(name = "date")
     private Date date;
+    @Basic
+    @Column(name = "product_count")
+    private int productCount;
 
-    }
+}

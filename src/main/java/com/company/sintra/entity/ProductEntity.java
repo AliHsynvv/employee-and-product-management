@@ -28,8 +28,5 @@ public class ProductEntity {
     @Basic
     @Column(name = "count")
     private int count;
-    @Basic
-    @Column(name = "date")
-    private Date date;
 
 }
