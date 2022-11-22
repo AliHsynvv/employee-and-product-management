@@ -14,7 +14,7 @@ import java.util.List;
 public class DateProductEntityController {
     private final DateProductsEntityService dateProductsEntityService;
 
-    @PostMapping
+    @PostMapping("/post")
     public void create(@RequestBody DateProductsEntityDto dateProductsEntityDto) {
         dateProductsEntityService.create(dateProductsEntityDto);
     }

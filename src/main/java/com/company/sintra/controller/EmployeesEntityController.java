@@ -15,7 +15,7 @@ import java.util.List;
 public class EmployeesEntityController {
     private final EmployeesEntityService employeesEntityService;
 
-    @PostMapping()
+    @PostMapping("/post")
     public  void create(@RequestBody EmployeesEntityDto employeesEntityDto){
         employeesEntityService.create(employeesEntityDto);
     }
