@@ -1,8 +1,6 @@
 server:
   port: 8080
 spring:
-
-
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,3 +11,5 @@ spring:
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: 12345
+
+
