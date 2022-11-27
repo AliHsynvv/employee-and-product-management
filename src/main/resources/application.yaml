@@ -3,12 +3,13 @@ server:
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
-  application:
-    name: ProductRez
+      ddl-auto: create
+    open-in-view: false
+    globally_quoted_identifiers: true
+
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: org.hibernate.dialect.PostgreSQLDialect
     username: postgres
     password: 12345
 

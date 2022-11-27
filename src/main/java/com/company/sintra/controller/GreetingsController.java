@@ -1,17 +1,19 @@
 package com.company.sintra.controller;
 
-import com.company.sintra.entity.User;
-import com.company.sintra.repository.UserRepository;
 import com.company.sintra.service.impl.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1")
+@RequestMapping("/api/v1")
 @RequiredArgsConstructor
 public class GreetingsController {
+
     private final UserService userService;
+
     @GetMapping("/hello")
     public ResponseEntity<String> greetings() {
         return ResponseEntity.ok("Hello");
@@ -29,7 +31,7 @@ public class GreetingsController {
 //         userService.create(user);
 //    }
 
-    //For managers
+    //For managers22
     @GetMapping("/manager")
     public ResponseEntity<String> manager() {
         return ResponseEntity.ok("Welcome to the site, manager");

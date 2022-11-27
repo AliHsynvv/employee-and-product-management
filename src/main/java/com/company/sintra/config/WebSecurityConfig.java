@@ -25,10 +25,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers(GET, "/user").hasAnyRole("USER", "MANAGER")
-                .antMatchers(POST, "/user").hasRole("MANAGER")
-                .antMatchers("/v1/manager").hasRole("MANAGER")
-                .antMatchers("/v1/**").permitAll();
+                .antMatchers(GET, "/api/v1/user").hasAnyRole("USER", "MANAGER")
+                .antMatchers(POST, "/api/v1/user").hasRole("MANAGER")
+                .antMatchers("/api/v1/manager").hasRole("MANAGER")
+                .antMatchers("/api/v1/**").permitAll();
         http.logout().disable();
         http.formLogin().disable();
         super.configure(http);
